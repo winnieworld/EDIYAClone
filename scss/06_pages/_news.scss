@@ -1,0 +1,394 @@
+// 이디야 뉴스 (news) 공통 시작 ------------------------------------------------------------- /
+.news {
+  display: block;
+  position: relative;
+  margin-bottom: 100px;
+
+  .sr-only {
+    @include a11yHidden;
+  }
+
+  // navigation
+  &__nav {
+    &__list {
+      @include flexbox($flex-wrap: wrap, $align-items: center);
+      font-size: rem(16px);
+    }
+
+    &__item {
+      a {
+        display: block;
+        font-size: rem(15px);
+        font-weight: bold;
+        @include paddingY(12px);
+        @include paddingX(32px);
+        white-space: nowrap;
+        border: 2px solid $grayscaleSnow;
+        color: $primaryBlue;
+      }
+    }
+
+    [aria-selected='true'] a {
+      background: $primaryBlue;
+      color: $grayscaleWhite;
+    }
+
+    @include desktop {
+      margin-top: rem(50px);
+      width: rem(480px);
+      @include autoMargin;
+
+      &__list {
+        flex-flow: row nowrap;
+      }
+    }
+
+    @include mobile {
+      &__item {
+        width: 50%;
+        text-align: center;
+      }
+    }
+  }
+
+  // default display : none
+  &__notice,
+  &__social,
+  &__promotion,
+  &__prize {
+    display: none;
+
+    @include desktop {
+      width: rem(740px);
+      @include autoMargin;
+    }
+  }
+
+  > .is-selected {
+    display: block;
+    margin-top: rem(50px);
+
+    > p {
+      margin-top: rem(8px);
+    }
+  }
+
+  // title area
+  [class*='__heading__area'] {
+    max-width: rem(740px);
+  }
+
+  [class*='__title'] {
+    font-size: rem(20px);
+    color: $primaryBlue;
+    font-weight: bold;
+
+    &::before {
+      content: '\\';
+      color: $accentCream;
+    }
+  }
+
+  [class*='__detail'] {
+    margin-top: rem(8px);
+  }
+
+  &__social {
+    padding: rem(15px);
+
+    fieldset {
+      width: 100%;
+      @include flexbox($justify-content: flex-end);
+      position: relative;
+    }
+
+    // search form
+    &__search__form {
+      margin-top: rem(15px);
+    }
+
+    // select
+    &__select {
+      width: rem(80px);
+      @include paddingY(5px);
+      background: $grayscaleSnow;
+      border: 1px solid $primaryBlue4;
+      border-radius: rem(4px);
+    }
+
+    &__search {
+      width: 50%;
+      @include paddingY(6px);
+      border: none;
+      text-indent: 0.5rem;
+      border-bottom: 1px solid $grayscaleBlack;
+      margin-left: rem(5px);
+
+      @include mobile {
+        width: auto;
+        flex-grow: 1;
+      }
+    }
+
+    &__searchbtn {
+      background: inherit;
+      border: none;
+      box-shadow: none;
+      border-radius: 0;
+      padding: 0;
+      overflow: visible;
+      cursor: default;
+
+      display: block;
+      position: absolute;
+      height: 100%;
+      min-width: rem(8px);
+      right: 0;
+      top: 0;
+      color: transparent;
+      background: url('../../images/icon-search.svg') no-repeat;
+      background-position: 95% 50%;
+    }
+
+    // contents
+    &__contents {
+      margin-top: rem(20px);
+      @include flexbox($direction: column);
+
+      &__table {
+        border-top: rem(2px) solid $primaryBlue;
+        border-bottom: rem(2px) solid $primaryBlue;
+        @include flexbox($direction: column);
+        flex-grow: 1;
+        color: $primaryBlue;
+        font-size: rem(14px);
+
+        [class*='__row'] {
+          @include flexbox;
+        }
+
+        [class*='__index'] {
+          min-width: rem(60px);
+          text-align: center;
+          @include paddingY(8px);
+        }
+
+        [class*='__desc'] {
+          width: rem(679px);
+          @include paddingY(8px);
+          padding-left: rem(80px);
+          padding-right: rem(10px);
+
+          a {
+            display: block;
+            flex-grow: 1;
+          }
+        }
+
+        [class*='__time'] {
+          min-width: rem(85px);
+          white-space: nowrap;
+          @include paddingY(8px);
+          text-align: center;
+          @include mobile {
+            width: 80%;
+          }
+        }
+
+        // header
+        &__header {
+          &__list {
+            @include flexbox;
+            text-align: center;
+            white-space: nowrap;
+          }
+        }
+
+        // contents
+        &__contents {
+          [role='row'] {
+            border-top: 1px solid $primaryBlue3;
+          }
+
+          [class*='__index'] {
+            font-size: rem(12px);
+          }
+
+          [class*='__desc'] {
+            font-size: rem(15px);
+            background: url('../../images/news-thumbnail.jpg') no-repeat;
+            background-position: rem(10px);
+
+            @include mobile {
+              padding-left: initial;
+              background: none;
+            }
+
+            p {
+              font-size: rem(13px);
+            }
+          }
+
+          [class*='__time'] {
+            font-size: rem(12px);
+          }
+
+          @include mobile {
+            [class*='time'] {
+              text-align: initial;
+            }
+          }
+        }
+      }
+
+      // pagination
+      &__pagination {
+        margin-top: rem(15px);
+        @include flexbox($justify-content: center);
+
+        button {
+          background: inherit;
+          border: none;
+          box-shadow: none;
+          border-radius: 0;
+          padding: 0;
+          overflow: visible;
+          cursor: default;
+
+          width: 30px;
+          background: yellow;
+        }
+        .prev {
+          background: url('../../images/button-prev.svg') no-repeat 50% 50%;
+        }
+
+        .next {
+          background: url('../../images/button-next.svg') no-repeat 50% 50%;
+        }
+
+        &__list {
+          font-size: rem(12px);
+          color: $primaryBlue3;
+          @include marginX(18px);
+          @include flexbox($justify-content: center);
+        }
+
+        &__item {
+          @include marginX(8px);
+        }
+
+        &__link {
+          display: block;
+        }
+      }
+    }
+  }
+
+  // 4. prize
+  &__prize {
+    &__outer {
+      margin-top: rem(20px);
+      @include paddingX(15px);
+      padding-top: rem(24px);
+      padding-bottom: rem(100px);
+      background: $grayscaleSnow;
+    }
+
+    &__wrapper {
+      @include flexbox($flex-wrap: nowrap);
+    }
+
+    &__year {
+      display: inline-block;
+      margin-left: rem(8px);
+      margin-right: rem(24px);
+      font-size: rem(20px);
+      font-weight: bold;
+      color: $primaryBlue;
+    }
+
+    &__list {
+      // flex-grow: 1;
+      width: 100%;
+      position: relative;
+
+      summary::marker {
+        content: '';
+      }
+
+      details summary::after {
+        content: '';
+        width: rem(24px);
+        height: rem(24px);
+        background: url('../../images/icon-arrow-down.svg') no-repeat;
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: $primaryBlue3;
+      }
+
+      details[open] summary::after {
+        content: '';
+        width: rem(24px);
+        height: rem(24px);
+        background: url('../../images/icon-arrow-up.svg') no-repeat;
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: $primaryBlue;
+      }
+
+      &::after {
+        content: '';
+        width: rem(5px);
+        height: rem(5px);
+        top: 0;
+        left: 0;
+        border-radius: 100%;
+        background: $primaryBlue;
+        position: absolute;
+        transform: translateX(-30%);
+      }
+    }
+
+    &__article {
+      border-left: 1px solid $primaryBlue3;
+      @include paddingY(12px);
+      padding-left: rem(24px);
+      font-size: rem(13px);
+
+      summary {
+        transform: translateX(-1 * rem(20px));
+        font-weight: bold;
+      }
+
+      .month {
+        font-size: rem(12px);
+        margin-right: rem(4px);
+        font-weight: normal;
+      }
+
+      img {
+        margin-top: rem(16px);
+      }
+
+      .badge {
+        display: inline-block;
+        @include paddingX(6px);
+        font-size: rem(11px);
+        background: $primaryBlue;
+        line-height: 1.7;
+        color: $primaryBlue4;
+        border-radius: 15px;
+      }
+
+      time {
+        font-size: rem(11px);
+        color: $primaryBlue2;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+// 이디야 소식 (News) 종료 ------------------------------------------------------------- /

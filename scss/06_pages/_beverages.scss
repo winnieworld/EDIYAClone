@@ -1,0 +1,168 @@
+// 이디야 음료 시작 ----------------------------------------------------------------- /
+.beverage-container {
+  padding: rem(20px);
+}
+
+.beverage-list {
+  width: 100%;
+
+  @include desktop {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 20px 30px;
+    margin: 0 auto;
+    width: 740px;
+  }
+}
+
+.beverage-item {
+  position: relative;
+  width: 100%;
+  background-color: $grayscaleSnow;
+  padding: 20px 0 40px;
+  margin-bottom: 20px;
+  cursor: pointer;
+
+  @include mobile {
+    min-width: 323px;
+  }
+
+  @include desktop {
+    width: calc(50% - 10px);
+    &:nth-child(2n) {
+      margin-left: 20px;
+    }
+  }
+}
+
+.beverage-figure {
+  opacity: 0.3;
+}
+
+.beverage-figure img {
+  display: block;
+  margin: 0 auto;
+  transform: scale(0.8);
+  transition: all 0.8s;
+}
+
+.beverage-item:hover img {
+  transform: scale(1);
+}
+
+.beverage-summary-name {
+  color: $white;
+  text-align: center;
+}
+
+.beverage-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 30px 20px 20px;
+  border: 1px solid $accentAmber;
+  cursor: default;
+}
+
+.beverage-name {
+  @include fontDetail(400, 18px, 18px, $grayscaleBlack);
+}
+
+.beverage-eng-name {
+  display: block;
+  margin: 8px 0 16px;
+  @include fontDetail(400, 14px, 14px, $grayscaleGray);
+
+  &::after {
+    content: '';
+    width: 100%;
+    display: block;
+    margin: 16px 0 10px;
+    border-bottom: 2px solid $grayscaleBlack;
+  }
+}
+
+.beverage-content {
+  @include fontDetail(400, 16px, 22.4px, $grayscaleBlack);
+}
+
+.beverage-nutrition-list {
+  position: absolute;
+  display: flex;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 33px 11px 16px;
+  @include fontDetail(400, 13px, 13px, $grayscaleBlack);
+}
+
+.beverage-nutrition-left,
+.beverage-nutrition-right {
+  width: 50%;
+  display: flex;
+  flex-flow: column wrap;
+  white-space: nowrap;
+  text-align: start;
+}
+
+.beverage-nutrition-left {
+  border-right: 1px solid $black;
+  margin-right: 16px;
+}
+
+.beverage-nutrition-list div {
+  // height: 16px;
+}
+
+.beverage-dl,
+.beverage-dt {
+  display: inline-block;
+  margin-bottom: 5px;
+  width: 50%;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background-color: transparent;
+  color: $grayscaleGray;
+  font-size: 20px;
+}
+
+.is-hidden {
+  .beverage-figure {
+    opacity: 1;
+  }
+
+  .beverage-info {
+    display: none;
+  }
+  .beverage-summary-name {
+    // display: block;
+    color: $black;
+  }
+}
+
+// 이디야 음료 종료 ----------------------------------------------------------------- /
+
+// 페이지 상단 이동 버튼
+.top-scroll-container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 55px;
+  height: 55px;
+}
+
+.top-scroll-button {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: none;
+  border-radius: 50px;
+  background-color: transparent;
+  opacity: 0.7;
+}

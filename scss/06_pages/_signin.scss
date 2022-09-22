@@ -1,0 +1,264 @@
+// ------ 로그인 시작 ------//
+.main-login {
+  min-height: 651px;
+  text-align: center;
+
+  @include mobile {
+    background: url(../../images/coffee-mobile.jpg) no-repeat center / cover;
+    padding-bottom: 30px;
+  }
+
+  @include desktop {
+    background: url(../../images/coffee-desktop.jpg) no-repeat center / cover;
+    padding-bottom: 40px;
+  }
+}
+
+.main2 {
+  height: 651px;
+  text-align: center;
+}
+
+.welcome-section {
+  padding: rem(100px) 0;
+}
+
+.login-header {
+  @include fontDetail(300, rem(36px), rem(36px), $grayscaleWhite);
+  p:first-child {
+    @include fontDetail(400, rem(18px), rem(18px), $grayscaleWhite);
+    margin: rem(24px) 0 rem(9px) 0;
+  }
+  p:last-child {
+    @include fontDetail(400, rem(12px), rem(12px), $grayscaleWhite);
+  }
+}
+
+.input-field {
+  padding: 0 15px;
+  margin: 0 15px;
+  max-width: rem(600px);
+  width: 100%;
+  @include autoMargin(auto);
+}
+
+.email,
+.password,
+.password2 {
+  @include fontDetail(400, 18px, 27px, $grayscaleWhite);
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  transition: all 0.3s ease;
+}
+
+.email-container,
+.password-container {
+  position: relative;
+  padding-top: rem(15px);
+  height: rem(70px);
+}
+
+.email-invalid,
+.pwd-invalid,
+.pwd-invalid2 {
+  display: none;
+  margin-top: 10px;
+  text-align: left;
+  text-indent: 20px;
+  @include fontDetail(400, 12px, 18px, $grayscaleWhite);
+}
+
+.warning,
+.success,
+.eye {
+  display: none;
+  position: absolute;
+  right: rem(20px);
+  bottom: rem(20px);
+}
+
+.warning-pwd {
+  display: none;
+  position: absolute;
+  right: rem(40px);
+  bottom: rem(20px);
+}
+
+#email {
+  box-shadow: 0 0.5px $grayscaleWhite;
+  width: 100%;
+  max-width: rem(540px);
+  height: rem(50px);
+  text-indent: rem(5px);
+  color: $grayscaleWhite;
+  transition: all 0.5s ease;
+  &:invalid {
+    ~ .email-invalid {
+      display: block;
+    }
+    ~ .warning {
+      display: block;
+    }
+  }
+  &:valid {
+    ~ .email-invalid {
+      display: none;
+    }
+    ~ .warning {
+      display: none;
+    }
+  }
+}
+
+#password,
+#password2 {
+  box-shadow: 0 0.5px $grayscaleWhite;
+  width: 100%;
+  max-width: rem(540px);
+  height: rem(50px);
+  text-indent: rem(5px);
+  color: $grayscaleWhite;
+}
+
+#email:focus {
+  transition: all 0.5s ease;
+  box-shadow: 0 2px $grayscaleWhite;
+}
+
+.label-active {
+  transition: all 0.3s ease;
+  font-size: 13px;
+  top: 0;
+  left: 15px;
+}
+
+#password:focus,
+#password2:focus {
+  transition: all 0.5s ease;
+  box-shadow: 0 2px $grayscaleWhite;
+  ~ .eye {
+    display: block;
+  }
+}
+
+.password-container {
+  margin-top: rem(15px);
+  margin-bottom: rem(15px);
+}
+
+.confirm {
+  margin-bottom: rem(30px);
+}
+
+.pwd-invalid,
+.pwd-invalid2 {
+  margin-bottom: 10px;
+}
+
+.checkbox-container {
+  width: rem(77px);
+  @include flexbox(row-reverse, center, center);
+  margin-left: rem(15px);
+  margin-bottom: rem(70px);
+}
+
+.checkbox {
+  @include fontDetail(400, rem(12px), rem(12px), $grayscaleWhite);
+  margin-left: 6px;
+}
+
+#checkbox {
+  appearance: none;
+  width: 13px;
+  height: 13px;
+  border: 1px solid $grayscaleWhite;
+  border-radius: 3px;
+}
+
+.checked {
+  appearance: none;
+  width: 13px;
+  height: 13px;
+  border: 1px solid $grayscaleWhite;
+  border-radius: 3px;
+  background: url(../../images/icon-checked-square.svg) -2px -2px !important;
+}
+
+.button-container {
+  @include desktop {
+    @include flexbox(row, space-between);
+    padding: 0 10px;
+  }
+  @include mobile {
+    @include flexbox(column, flex-start, center);
+    .form-btn {
+      margin-bottom: 15px;
+    }
+  }
+}
+
+.form-btn {
+  display: inline-block;
+  width: rem(260px);
+  height: rem(48px);
+  background-color: $grayscaleWhite;
+  border-radius: 8px;
+  @include fontDetail(700, 20px, 30px, $accentAmber);
+  position: relative;
+  cursor: not-allowed;
+  &::after {
+    content: url(../../images/icon-arrow-amber.svg);
+    width: rem(20px);
+    height: rem(20px);
+    display: inline-block;
+    position: absolute;
+    right: 14px;
+    bottom: 15px;
+  }
+}
+
+.form-btn.is--active {
+  display: inline-block;
+  width: rem(260px);
+  height: rem(48px);
+  background-color: $grayscaleWhite;
+  border-radius: 8px;
+  @include fontDetail(700, 20px, 30px, $primaryBlue);
+  position: relative;
+  cursor: pointer;
+  &::after {
+    content: url(../../images/icon-arrow-darkblue.svg);
+    width: rem(20px);
+    height: rem(20px);
+    display: inline-block;
+    position: absolute;
+    right: 14px;
+    bottom: 14px;
+  }
+}
+
+.form-a {
+  display: inline-block;
+  position: relative;
+  width: rem(260px);
+  height: rem(48px);
+  border-radius: 8px;
+  border: 1px solid $grayscaleWhite;
+  @include fontDetail(700, 20px, 20px, $grayscaleSnow);
+  line-height: rem(48px);
+  opacity: 0.7;
+  &::after {
+    content: url(../../images/icon-arrow-white.svg);
+    width: rem(20px);
+    height: rem(20px);
+    display: inline-block;
+    position: absolute;
+    right: 14px;
+    top: 2px;
+  }
+  &:hover {
+    opacity: 1;
+  }
+}
+// ------ 로그인 종료 ------//

@@ -1,0 +1,57 @@
+// 내비게이션 시작 --------------------------------------------------------------------- /
+// nav
+.nav {
+  // nav 모바일
+  @include mobile {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: $grayscaleBlack2;
+    z-index: 1;
+
+    &.is-active {
+      display: block;
+    }
+
+    .nav-list {
+      padding: 106px 10px 0;
+      color: $grayscaleWhite;
+      font-size: 14px;
+      font-weight: 400;
+
+      .nav-itme {
+        &:first-child {
+          border-top: 1px solid rgba(36, 56, 141, 0.5);
+        }
+        border-bottom: 1px solid rgba(36, 56, 141, 0.5);
+
+        a {
+          display: block;
+          padding: 12px;
+        }
+      }
+    }
+  }
+
+  // nav desktop
+  @include desktop {
+    .nav-list {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 15px;
+      font-weight: 400;
+      color: $primaryBlue;
+
+      .nav-itme {
+        margin-left: 8px;
+      }
+    }
+  }
+}
+// 네비게이션 종료 ------------------------------------------------------------------ /
